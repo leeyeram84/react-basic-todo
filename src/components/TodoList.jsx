@@ -50,7 +50,7 @@ const TodoList = () => {
                     onChange={handleInputChange}
                     placeholder="Enter a new Todo"
                 ></input>
-                <button type="submit">ADD TODO</button>
+                <button type="submit">+</button>
             </form>
             <ul>
                 {todos.map((todo) => (

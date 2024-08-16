@@ -7,6 +7,8 @@
 }
 
 button {
+    width: 25px;
+    height: 20px;
     margin: 2px;
     padding: 2px;
     border: none;
@@ -18,4 +20,10 @@ button {
 input {
     border: 1px solid burlywood;
     border-radius: 2px;
+}
+
+/* ul태그 안에 들어간 list에는 기본적으로 ::marker style이 적용이 되어있기때문에 none 설정으로 없애거나 혹은 다른 값으로 설정을 해주어야한다.  */
+/* 혹은 reset CSS를 통해 html의 css를 모두 초기화 해주는것도 방법 */
+ul {
+    list-style-type: square;
 }
