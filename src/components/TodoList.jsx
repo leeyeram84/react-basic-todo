@@ -53,9 +53,13 @@ const TodoList = () => {
                 <button type="submit">+</button>
             </form>
             <ul>
-                {todos.map((todo) => (
-                    <li key={todo.id}>{todo.text}</li>
-                ))}
+                <div className="checkBox">
+                    {todos.map((todo) => (
+                        <li type="checkbox" key={todo.id}>
+                            {todo.text}
+                        </li>
+                    ))}
+                </div>
             </ul>
         </div>
     );
