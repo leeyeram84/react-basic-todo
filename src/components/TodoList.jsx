@@ -95,7 +95,8 @@ const TodoList = () => {
     const completedLine = (completed) => {};
 
     return (
-        <div>
+        <div className="container">
+            <h2>힛츄윗댓 Todo Todo 투</h2>
             <form onSubmit={hadleSubmit}>
                 <input
                     type="text"
