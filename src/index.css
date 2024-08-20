@@ -80,3 +80,7 @@ li {
 .completedLine {
     text-decoration: line-through;
 }
+
+.notCompletedLine {
+    text-decoration: underline;
+}

@@ -112,9 +112,20 @@ const TodoList = () => {
                     <li key={todo.id}>
                         {/* 완료한 항목 취소선 넣기 */}
                         {/* className을 삼항 연산자로 하여 todo.completed의 상채가 true 일 경우 취소선 스타일 적용 */}
-                        <span className={todo.completed ? "completedLine" : ""}>
+                        {/* <span className={todo.completed ? "completedLine" : ""}>
                             {todo.text} - {String(todo.completed)}
-                        </span>
+                        </span> */}
+
+                        {/* todo.completed 의 상태에 따라 span태그의 스타일 적용 */}
+                        {todo.completed ? (
+                            <span className="completedLine">
+                                {todo.text} - {String(todo.completed)}
+                            </span>
+                        ) : (
+                            <span className="notCompletedLine">
+                                {todo.text} - {String(todo.completed)}
+                            </span>
+                        )}
                         <button
                             id="completed"
                             onClick={() => toggleCompleted(todo.id)}

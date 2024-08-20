@@ -1,0 +1,21 @@
+className 을 동적으로 스타일링 할 수 있다.
+-삼항 연산자 및 && 연산자 등을 사용하여 조건에 따라 span 태그를 자유롭게 스타일링 할 수 있다.
+
+.삼항연산자
+<span className={todo.completed ? "completedLine" : ""}>
+{todo.text} - {String(todo.completed)}
+</span>
+
+.또 다른 표현법
+{todo.completed ? (
+    <span className="completedLine">
+        {todo.text} - {String(todo.completed)}
+    </span>) : (
+    <span className="notCompletedLine">
+        {todo.text} - {String(todo.completed)}
+    </span>
+)}
+
+.&&연산자
+{todo.complete === '1' && <span></span>}
+{todo.complete === '3' && <span></span>}
