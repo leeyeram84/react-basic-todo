@@ -2,16 +2,16 @@ import React from "react";
 import { useState } from "react";
 
 const SAMPLE_TODOS = [
-    { id: 1, text: "Buy milk" },
-    { id: 2, text: "Clean the house" },
-    { id: 3, text: "Go for a run" },
-    { id: 4, text: "Finish homework" },
-    { id: 5, text: "Call mom" },
-    { id: 6, text: "Buy groceries" },
-    { id: 7, text: "Walk the dog" },
-    { id: 8, text: "Read a book" },
-    { id: 9, text: "Do laundry" },
-    { id: 10, text: "Write code" },
+    { id: 1, text: "Buy milk", completed: false },
+    { id: 2, text: "Clean the house", completed: false },
+    { id: 3, text: "Go for a run", completed: false },
+    { id: 4, text: "Finish homework", completed: false },
+    { id: 5, text: "Call mom", completed: false },
+    { id: 6, text: "Buy groceries", completed: false },
+    { id: 7, text: "Walk the dog", completed: false },
+    { id: 8, text: "Read a book", completed: false },
+    { id: 9, text: "Do laundry", completed: false },
+    { id: 10, text: "Write code", completed: false },
 ];
 
 const TodoList = () => {
@@ -26,8 +26,15 @@ const TodoList = () => {
             return;
         }
 
+        // 새로 받은 데이터 저장
+        const newTodoObj = {
+            id: crypto.randomUUID(),
+            text: newTodo,
+            completed: false,
+        };
+
         // 새로 받은 데이터 추가 및 그리기
-        setTodos([...todos, { id: crypto.randomUUID(), text: newTodo }]);
+        setTodos([newTodoObj, ...todos]);
 
         // input box 초기화
         setnewTodos("");
@@ -41,6 +48,49 @@ const TodoList = () => {
         setnewTodos(e.target.value);
     };
 
+    // completed 업데이트
+
+    //forEach
+    // const toggleCompleted = (id) => {
+    //     const updatedTodos = [];
+
+    //     todos.forEach((todo) => {
+    //         if (todo.id === id) {
+    //             const updatedTodo = {
+    //                 id: todo.id,
+    //                 text: todo.text,
+    //                 completed: !todo.completed,
+    //             };
+
+    //             updatedTodos.push(updatedTodo);
+    //         } else {
+    //             updatedTodos.push(todo);
+    //         }
+    //     });
+
+    //     setTodos(updatedTodos);
+    // };
+
+    //map
+    const toggleCompleted = (id) => {
+        // map을 통해 순환
+        const updatedTodos = todos.map((todo) => {
+            // 동일한 id의 값을 가진 배열만 수정
+            if (todo.id === id) {
+                return {
+                    id: todo.id, // 기존 데이터 받아오기
+                    text: todo.text,
+                    completed: !todo.completed, //completed상태 반전
+                };
+            } else {
+                // id가 다를 경우 그대로 반환
+                return todo;
+            }
+        });
+
+        setTodos(updatedTodos);
+    };
+
     return (
         <div>
             <form onSubmit={hadleSubmit}>
@@ -50,16 +100,22 @@ const TodoList = () => {
                     onChange={handleInputChange}
                     placeholder="Enter a new Todo"
                 ></input>
-                <button type="submit">+</button>
+                <button id="sumbtn" type="submit">
+                    +
+                </button>
             </form>
             <ul>
-                <div className="checkBox">
-                    {todos.map((todo) => (
-                        <li type="checkbox" key={todo.id}>
-                            {todo.text}
-                        </li>
-                    ))}
-                </div>
+                {todos.map((todo) => (
+                    <li key={todo.id}>
+                        {todo.text} - {String(todo.completed)}
+                        <button
+                            id="completed"
+                            onClick={() => toggleCompleted(todo.id)}
+                        >
+                            완료
+                        </button>
+                    </li>
+                ))}
             </ul>
         </div>
     );
