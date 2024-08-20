@@ -90,26 +90,6 @@ const TodoList = () => {
         setTodos(updatedTodos);
     };
 
-    // 체크박스를 통한 completed 값 업데이트
-    const togleChecked = (id) => {
-        // map을 통해 순환
-        const updatedTodos = todos.map((todo) => {
-            // 동일한 id의 값을 가진 배열만 수정
-            if (todo.id === id) {
-                return {
-                    id: todo.id, // 기존 데이터 받아오기
-                    text: todo.text,
-                    completed: !todo.completed, //completed상태 반전
-                };
-            } else {
-                // id가 다를 경우 그대로 반환
-                return todo;
-            }
-        });
-
-        setTodos(updatedTodos);
-    };
-
     return (
         <div className="container">
             <h2>힛츄윗댓 Todo Todo 투</h2>
@@ -132,11 +112,11 @@ const TodoList = () => {
                         {/* <span className={todo.completed ? "completedLine" : ""}>
                             {todo.text} - {String(todo.completed)}
                         </span> */}
-                        {/* checkbox를 통해 완료 항목 취소선 넣기 */}
+                        {/* checkbox를 통해 완료 항목 completed 값 변경 */}
                         <input
                             id={todo.id}
                             type="checkbox"
-                            onClick={() => togleChecked(todo.id)}
+                            onClick={() => toggleCompleted(todo.id)}
                         />
                         <label htmlFor={todo.id}></label>
 
