@@ -77,8 +77,6 @@ const TodoList = () => {
         const updatedTodos = todos.map((todo) => {
             // 동일한 id의 값을 가진 배열만 수정
             if (todo.id === id) {
-                // 완료시 취소선 긋기
-
                 return {
                     id: todo.id, // 기존 데이터 받아오기
                     text: todo.text,
@@ -92,6 +90,9 @@ const TodoList = () => {
 
         setTodos(updatedTodos);
     };
+
+    // 완료 시 취소선 생성
+    const completedLine = (completed) => {};
 
     return (
         <div>
@@ -109,7 +110,11 @@ const TodoList = () => {
             <ul>
                 {todos.map((todo) => (
                     <li key={todo.id}>
-                        {todo.text} - {String(todo.completed)}
+                        {/* 완료한 항목 취소선 넣기 */}
+                        {/* className을 삼항 연산자로 하여 todo.completed의 상채가 true 일 경우 취소선 스타일 적용 */}
+                        <span className={todo.completed ? "completedLine" : ""}>
+                            {todo.text} - {String(todo.completed)}
+                        </span>
                         <button
                             id="completed"
                             onClick={() => toggleCompleted(todo.id)}

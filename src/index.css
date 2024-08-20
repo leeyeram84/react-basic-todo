@@ -52,7 +52,7 @@ form {
     top: 2px;
 }
 
-input {
+input[type="text"] {
     width: 250px;
     height: 27px;
     margin: 5px;
@@ -61,7 +61,7 @@ input {
     border-radius: 10px 1px 1px 10px;
 }
 
-input:focus {
+input:focus[type="text"] {
     outline: none;
 }
 
@@ -75,4 +75,8 @@ li {
     margin: 5px;
     font-size: 17px;
     padding: 5px;
+}
+
+.completedLine {
+    text-decoration: line-through;
 }
