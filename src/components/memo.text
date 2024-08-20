@@ -19,3 +19,6 @@ className 을 동적으로 스타일링 할 수 있다.
 .&&연산자
 {todo.complete === '1' && <span></span>}
 {todo.complete === '3' && <span></span>}
+
+.css 끼리는 글로벌스코프를 이용한다
+=> 모듈스코프(.module.css) 이용

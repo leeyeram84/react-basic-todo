@@ -1,5 +1,4 @@
-@import "./reset.css";
-
+/* 분리 */
 .main-center {
     display: flex;
     flex-direction: column;
@@ -9,17 +8,19 @@
     background-color: rgb(222, 222, 222);
 }
 
+/* 모듈~~~ */
 .container {
     background-color: white;
 }
 
+/* 태그별 classname을 만들어 별개 적용 권장 */
 h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 75px;
-    font-size: 30px;
+    font-size: 20px;
     letter-spacing: 3px;
     color: white;
     background-color: rgb(174, 108, 235);
@@ -28,14 +29,12 @@ h2 {
 form {
     width: 300px;
     height: 30px;
-    margin: 5px;
     padding: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     border: 3px solid blueviolet;
-    border-radius: 18px;
 }
 
 #sumbtn {
@@ -79,25 +78,46 @@ input[type="text"] {
 }
 
 input:focus[type="text"] {
-    outline: 2px solid blueviolet;
+    outline: none;
+}
+
+/* 기존 체크박스 스타일 숨기기 */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* 새로운 체크박스 스타일 */
+input[type="checkbox"] + label {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: solid 2px blueviolet;
+    background-color: none;
+    cursor: pointer;
+}
+
+/* 체크박스 체크시 스타일 */
+input:checked[type="checkbox"] + label {
+    background-color: blueviolet;
+}
+
+input:checked[type="checkbox"] + label::after {
+    content: "✔";
+    font-size: 14px;
+    color: white;
+    user-select: none;
 }
 
 /* ul태그 안에 들어간 list에는 기본적으로 ::marker style이 적용이 되어있기때문에 none 설정으로 없애거나 혹은 다른 값으로 설정을 해주어야한다.  */
 /* 혹은 reset CSS를 통해 html의 css를 모두 초기화 해주는것도 방법 */
-ul {
-    list-style-type: square;
-}
 
 li {
     margin: 5px;
     font-size: 17px;
     padding: 5px;
+    list-style: none; /*마커없애기 */
 }
 
 .completedLine {
     text-decoration: line-through;
-}
-
-.notCompletedLine {
-    text-decoration: underline;
 }

@@ -49,7 +49,6 @@ const TodoList = () => {
     };
 
     // completed 업데이트
-
     //forEach
     // const toggleCompleted = (id) => {
     //     const updatedTodos = [];
@@ -91,8 +90,25 @@ const TodoList = () => {
         setTodos(updatedTodos);
     };
 
-    // 완료 시 취소선 생성
-    const completedLine = (completed) => {};
+    // 체크박스를 통한 completed 값 업데이트
+    const togleChecked = (id) => {
+        // map을 통해 순환
+        const updatedTodos = todos.map((todo) => {
+            // 동일한 id의 값을 가진 배열만 수정
+            if (todo.id === id) {
+                return {
+                    id: todo.id, // 기존 데이터 받아오기
+                    text: todo.text,
+                    completed: !todo.completed, //completed상태 반전
+                };
+            } else {
+                // id가 다를 경우 그대로 반환
+                return todo;
+            }
+        });
+
+        setTodos(updatedTodos);
+    };
 
     return (
         <div className="container">
@@ -116,6 +132,13 @@ const TodoList = () => {
                         {/* <span className={todo.completed ? "completedLine" : ""}>
                             {todo.text} - {String(todo.completed)}
                         </span> */}
+                        {/* checkbox를 통해 완료 항목 취소선 넣기 */}
+                        <input
+                            id={todo.id}
+                            type="checkbox"
+                            onClick={() => togleChecked(todo.id)}
+                        />
+                        <label htmlFor={todo.id}></label>
 
                         {/* todo.completed 의 상태에 따라 span태그의 스타일 적용 */}
                         {todo.completed ? (
@@ -123,7 +146,7 @@ const TodoList = () => {
                                 {todo.text} - {String(todo.completed)}
                             </span>
                         ) : (
-                            <span className="notCompletedLine">
+                            <span className="">
                                 {todo.text} - {String(todo.completed)}
                             </span>
                         )}
