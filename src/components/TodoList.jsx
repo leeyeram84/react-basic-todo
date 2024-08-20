@@ -77,6 +77,8 @@ const TodoList = () => {
         const updatedTodos = todos.map((todo) => {
             // 동일한 id의 값을 가진 배열만 수정
             if (todo.id === id) {
+                // 완료시 취소선 긋기
+
                 return {
                     id: todo.id, // 기존 데이터 받아오기
                     text: todo.text,
