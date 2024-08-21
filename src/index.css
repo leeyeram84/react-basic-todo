@@ -51,7 +51,7 @@ form {
     background-color: blueviolet;
 }
 
-#completed {
+#delete {
     margin: 10px;
     border: none;
     border-radius: 3px;
@@ -59,11 +59,11 @@ form {
     color: white;
 }
 
-#completed:hover {
+#delete:hover {
     background-color: blueviolet;
 }
 
-#completed:active {
+#delete:active {
     background-color: rgb(121, 14, 157);
     position: relative;
     top: 2px;

@@ -90,6 +90,15 @@ const TodoList = () => {
         setTodos(updatedTodos);
     };
 
+    // todo 삭제
+    const handleDelete = (id) => {
+        // filter를 통해 새로운 배열 생성
+        // todo.id와 id의 값이 같으면 false를 반환하여 해당 id를 가진 배열을 제외한 새로운 배열 리턴
+        const filteredTodos = todos.filter((todo) => todo.id !== id);
+
+        setTodos(filteredTodos);
+    };
+
     return (
         <div className="container">
             <h2>힛츄윗댓 Todo Todo 투</h2>
@@ -122,19 +131,21 @@ const TodoList = () => {
 
                         {/* todo.completed 의 상태에 따라 span태그의 스타일 적용 */}
                         {todo.completed ? (
-                            <span className="completedLine">
-                                {todo.text} - {String(todo.completed)}
-                            </span>
+                            <span className="completedLine">{todo.text}</span>
                         ) : (
-                            <span className="">
-                                {todo.text} - {String(todo.completed)}
-                            </span>
+                            <span className="">{todo.text} - 진행중</span>
                         )}
-                        <button
+                        {/* <button
                             id="completed"
                             onClick={() => toggleCompleted(todo.id)}
                         >
                             완료
+                        </button> */}
+                        <button
+                            id="delete"
+                            onClick={() => handleDelete(todo.id)}
+                        >
+                            삭제
                         </button>
                     </li>
                 ))}
