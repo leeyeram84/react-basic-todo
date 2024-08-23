@@ -13,7 +13,6 @@ const SAMPLE_TODOS = [
     // { id: 9, text: "Do laundry", completed: false },
     // { id: 10, text: "Write code", completed: false },
 ];
-
 const TodoList = () => {
     const [todos, setTodos] = useState(SAMPLE_TODOS);
 
@@ -49,27 +48,6 @@ const TodoList = () => {
     };
 
     // completed 업데이트
-    //forEach
-    // const toggleCompleted = (id) => {
-    //     const updatedTodos = [];
-
-    //     todos.forEach((todo) => {
-    //         if (todo.id === id) {
-    //             const updatedTodo = {
-    //                 id: todo.id,
-    //                 text: todo.text,
-    //                 completed: !todo.completed,
-    //             };
-
-    //             updatedTodos.push(updatedTodo);
-    //         } else {
-    //             updatedTodos.push(todo);
-    //         }
-    //     });
-
-    //     setTodos(updatedTodos);
-    // };
-
     //map
     const toggleCompleted = (id) => {
         // map을 통해 순환
@@ -117,10 +95,6 @@ const TodoList = () => {
                 {todos.map((todo) => (
                     <li key={todo.id}>
                         {/* 완료한 항목 취소선 넣기 */}
-                        {/* className을 삼항 연산자로 하여 todo.completed의 상채가 true 일 경우 취소선 스타일 적용 */}
-                        {/* <span className={todo.completed ? "completedLine" : ""}>
-                            {todo.text} - {String(todo.completed)}
-                        </span> */}
                         {/* checkbox를 통해 완료 항목 completed 값 변경 */}
                         <input
                             id={todo.id}
@@ -135,12 +109,6 @@ const TodoList = () => {
                         ) : (
                             <span className="">{todo.text} - 진행중</span>
                         )}
-                        {/* <button
-                            id="completed"
-                            onClick={() => toggleCompleted(todo.id)}
-                        >
-                            완료
-                        </button> */}
                         <button
                             id="delete"
                             onClick={() => handleDelete(todo.id)}
