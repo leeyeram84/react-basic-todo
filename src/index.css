@@ -38,8 +38,14 @@ form {
 }
 
 #sumbtn {
+    float: right;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
     width: 30px;
-    height: 30px;
+    height: 25px;
     font-size: 20px;
     padding: 2px;
     border: none;
@@ -52,6 +58,13 @@ form {
 }
 
 #delete {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    width: 35px;
+    height: 20px;
     margin: 10px;
     border: none;
     border-radius: 3px;
@@ -76,10 +89,12 @@ input[type="text"] {
     padding: 1px;
     border: none;
     font-size: 17px;
+    color: rgb(152, 152, 152);
 }
 
 input:focus[type="text"] {
     outline: none;
+    color: rgb(23, 23, 23);
 }
 
 /* 기존 체크박스 스타일 숨기기 */
@@ -105,17 +120,24 @@ input:checked[type="checkbox"] + label {
     background-color: blueviolet;
 }
 
-input:checked[type="checkbox"] + label::after {
+/* input:checked[type="checkbox"] + label::after {
+    display: inline-block;
+
     content: "✔";
     font-size: 14px;
     color: rgb(248, 211, 110);
     user-select: none;
-}
+} */
 
 /* ul태그 안에 들어간 list에는 기본적으로 ::marker style이 적용이 되어있기때문에 none 설정으로 없애거나 혹은 다른 값으로 설정을 해주어야한다.  */
 /* 혹은 reset CSS를 통해 html의 css를 모두 초기화 해주는것도 방법 */
 
 li {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+
     margin: 5px;
     font-size: 17px;
     padding: 5px;
@@ -124,4 +146,11 @@ li {
 
 .completedLine {
     text-decoration: line-through;
+}
+
+span {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
