@@ -13,7 +13,7 @@
     background-color: white;
 }
 
-/* 태그별 classname을 만들어 별개 적용 권장 */
+/* 태그별 className을 만들어 별개 적용 권장 */
 h2 {
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ form {
     border: 3px solid blueviolet;
 }
 
-#sumbtn {
+#sumBtn {
     float: right;
     display: flex;
     text-align: center;
@@ -53,7 +53,7 @@ form {
     color: white;
 }
 
-#sumbtn:hover {
+#sumBtn:hover {
     background-color: blueviolet;
 }
 

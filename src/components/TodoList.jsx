@@ -4,7 +4,7 @@ import { useState } from "react";
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
 
-    const hadleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault(); // 화면 리로드 방지
 
         // 공백 유효성 검사 // trim() : 문자열의 양 쪽 공백을 제거하는 함수
@@ -68,14 +68,14 @@ const TodoList = () => {
     return (
         <div className="container">
             <h2>힛츄윗댓 Todo Todo 투</h2>
-            <form onSubmit={hadleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={newTodo}
                     onChange={handleInputChange}
                     placeholder="Enter a new Todo"
                 ></input>
-                <button id="sumbtn" type="submit">
+                <button id="sumBtn" type="submit">
                     +
                 </button>
             </form>
