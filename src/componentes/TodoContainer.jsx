@@ -1,23 +1,13 @@
 import { useState } from "react";
 import { TODO_SAMPLE } from "../constants/TodoSample";
 import TodoList from "./TodoList";
+import TodoForm from "./TodoForm";
 
 const TodoContainer = () => {
     const [todos, setTodos] = useState(TODO_SAMPLE);
-    const [text, setText] = useState("");
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        const newTodo = {
-            id: crypto.randomUUID(),
-            text,
-            isCompleted: false,
-        };
-
-        setTodos([...todos, newTodo]);
-
-        setText("");
+    const addTodo = (todo) => {
+        setTodos([todo, ...todos]);
     };
 
     const onDelete = (id) => {
@@ -44,20 +34,11 @@ const TodoContainer = () => {
         });
 
         setTodos(newTodos);
-
-        console.log(newTodos);
     };
 
     return (
         <div>
-            <form onSubmit={onSubmit}>
-                <input
-                    type="text"
-                    onChange={(e) => setText(e.target.value)}
-                    value={text}
-                />
-                <button type="submit">추가</button>
-            </form>
+            <TodoForm addTodo={addTodo} />
 
             <TodoList
                 todos={todos}
