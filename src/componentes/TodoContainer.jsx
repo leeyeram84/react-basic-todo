@@ -18,6 +18,18 @@ const TodoContainer = () => {
 
         setText("");
     };
+
+    const onDelete = (id) => {
+        const filteredTodos = todos.filter((todo) => {
+            if (todo.id === id) {
+                return false;
+            }
+            return true;
+        });
+
+        setTodos(filteredTodos);
+    };
+
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -32,6 +44,13 @@ const TodoContainer = () => {
                 {todos.map((todo) => (
                     <li key={todo.id}>
                         {todo.text}-{todo.isCompleted ? "취소" : "미완료"}
+                        <button
+                            onClick={() => {
+                                onDelete(todo.id);
+                            }}
+                        >
+                            삭제
+                        </button>
                     </li>
                 ))}
             </ul>
